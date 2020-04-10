@@ -1,17 +1,20 @@
-const bodyParser = require('body-parser');
-const compression = require('compression');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const helmet = require('helmet');
+import * as express from 'express';
+import { Request, Response, NextFunction } from 'express';
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
+import * as cookieParser from 'cookie-parser';
+import * as cors from 'cors';
+import * as helmet from 'helmet';
 
-module.exports = {
+export default class Middleware {
+
     /**
      * @function
      * @description express middleware
      * @param {express.Application} app
      * @returns void
      */
-    init(app) {
+    init(app: express.Application): void {
         app.use(
             bodyParser.urlencoded({
                 extended: true,
@@ -28,7 +31,7 @@ module.exports = {
         // can be used to enable CORS with various options
         app.use(cors());
         // cors
-        app.use((req, res, next) => {
+        app.use((req: Request, res: Response, next: NextFunction) => {
             res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS ');
             res.header('Access-Control-Allow-Credentials', '*');
             res.header(
@@ -40,5 +43,5 @@ module.exports = {
             );
             next();
         });
-    },
-};
+    }
+}

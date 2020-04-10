@@ -1,18 +1,20 @@
-const express = require('express');
-const http = require('http');
-const path = require('path');
-const ejs = require('ejs');
-const BooksRouter = require('../components/Books/router');
+import * as express from 'express';
+import * as http from 'http';
+import * as path from 'path';
+import { Request, Response } from 'express';
+import * as ejs from 'ejs';
+import { booksRouter } from '../components/Books/router';
 
-module.exports = {
+
+export default class Router {
     /**
      * @function
      * @param {express.Application} app
      * @summary init Application router
      * @returns void
      */
-    init(app) {
-        const router = express.Router();
+    init(app: express.Application): void {
+        const router: express.Router = express.Router();
 
         /**
          * Forwards any requests to the /v1/books URI to BooksRouter.
@@ -22,7 +24,7 @@ module.exports = {
          * @param {string} path - Express path
          * @param {callback} middleware - Express middleware.
          */
-        app.use('/v1/books', BooksRouter);
+        app.use('/v1/books', booksRouter);
 
         /**
          * @description No results returned mean the object is not found
@@ -30,7 +32,7 @@ module.exports = {
          * @inner
          * @param {callback} middleware - Express middleware.
          */
-        app.use((req, res) => {
+        app.use((req: Request, res: Response) => {
             res.status(404).send(http.STATUS_CODES[404]);
         });
 
@@ -39,7 +41,7 @@ module.exports = {
 
         // use a template engine
         app.set('view engine', 'html');
-
+        
         // change path to views folder
         app.set('views', path.join(__dirname, '../../public'));
 
@@ -49,5 +51,5 @@ module.exports = {
          * @param {express.Router}
          */
         app.use(router);
-    },
-};
+    }
+}
