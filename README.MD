@@ -1,8 +1,22 @@
-1. Migrate books collection from books.xlsx or books.csv file.
-    - [migrate-mongo](https://www.npmjs.com/package/migrate-mongo)
+Lesson 8 'http-proxy' 
+Installation
 
-2. Load data to chart from database.
+git clone https://github.com/SergiyKovalenko/nodejs-lesson8.git
 
-3. Calculate field Title length for each document and migrate result value to collection. 
+Tasks for lesson
 
-4. Rewrite on Typescript
+Create proxy server
+Next urls must returns domains content with <h1>Hello world!</h1> content
+
+    http://localhost:3000/?host=https://github.com
+
+    http://localhost:3000/?host=https://wix.com
+
+    http://localhost:3000/?host=https://slack.com
+
+    http://localhost:3000/?host=https://medium.com
+
+Development setup
+
+npm i
+npm start 
