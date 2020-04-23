@@ -1,8 +1,9 @@
-import { Book } from './books.entity';
 import { MongoRepository } from 'typeorm';
+import { CreateBookDto } from './create-books.dto';
+import { BookEntity } from './books.entity';
 export declare class BookService {
-    private readonly booksRepository;
-    constructor(booksRepository: MongoRepository<Book>);
-    findAll(): Promise<Book[]>;
-    createBook(book: any): Promise<Book>;
+    private bookModel;
+    constructor(bookModel: MongoRepository<BookEntity>);
+    findAll(): Promise<BookEntity[]>;
+    createBook(CreateBookDto: CreateBookDto): Promise<BookEntity>;
 }

@@ -1,17 +1,21 @@
-import { Entity, ObjectID, ObjectIdColumn, Column } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, ObjectID} from 'typeorm';
+import { CreateBookPublishedDto } from './create-books.dto'
 
-@Entity()
-export class Book {
-  @ObjectIdColumn() id: ObjectID;
-  @Column() blogpost: string;
-  @Column() title: string;
-  @Column() author: string;
-  @Column() published: Array <{
-    publisher: string;
-    year: number;
-  }>;
+@Entity({ name: 'books' })
+export class BookEntity {
 
-  constructor(book?: Partial<Book>) {
-    Object.assign(this, book);
-  }
+    @ObjectIdColumn()
+    id: ObjectID;
+
+    @Column()
+    blogpost: string;
+
+    @Column()
+    title: string;
+
+    @Column()
+    author: string;
+
+    @Column()
+    published: CreateBookPublishedDto;
 }

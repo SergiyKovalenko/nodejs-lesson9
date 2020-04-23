@@ -1,8 +1,9 @@
 import { UserService } from './users.service';
-import { User } from './users.entity';
+import { UserEntity } from './users.entity';
+import { CreateUserDto } from './create-users.dto';
 export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
-    findAll(): Promise<User[]>;
-    createUser(user: Partial<User>): Promise<User>;
+    findAll(): Promise<UserEntity[]>;
+    createUser(CreateUserDto: CreateUserDto): Promise<UserEntity>;
 }

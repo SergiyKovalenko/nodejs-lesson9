@@ -1,8 +1,9 @@
-import { User } from './users.entity';
+import { UserEntity } from './users.entity';
 import { MongoRepository } from 'typeorm';
+import { CreateUserDto } from './create-users.dto';
 export declare class UserService {
-    private readonly usersRepository;
-    constructor(usersRepository: MongoRepository<User>);
-    findAll(): Promise<User[]>;
-    createUser(user: any): Promise<User>;
+    private userModel;
+    constructor(userModel: MongoRepository<UserEntity>);
+    findAll(): Promise<UserEntity[]>;
+    createUser(CreateUserDto: CreateUserDto): Promise<UserEntity>;
 }

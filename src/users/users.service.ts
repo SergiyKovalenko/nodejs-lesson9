@@ -1,20 +1,22 @@
-import { Injectable, Body } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './users.entity';
+import { UserEntity } from './users.entity';
 import { MongoRepository } from 'typeorm';
+import { CreateUserDto } from './create-users.dto';
 
 @Injectable()
 export class UserService {
+
   constructor(
-    @InjectRepository(User)
-    private readonly usersRepository: MongoRepository<User>,
-  ) {}
+    @InjectRepository(UserEntity) 
+    private userModel: MongoRepository<UserEntity>
+) {}
 
-  async findAll(): Promise<User[]> {
-    return await this.usersRepository.find({});
-  }
+async findAll(): Promise<UserEntity[]> {
+    return this.userModel.find();
+}
 
-  async createUser(user): Promise<User> {
-    return await this.usersRepository.save(new User(user));
-  }
+async createUser(CreateUserDto: CreateUserDto): Promise<UserEntity> {
+    return this.userModel.save(CreateUserDto);
+}
 }

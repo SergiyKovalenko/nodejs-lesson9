@@ -9,39 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const typeorm_1 = require("typeorm");
-let UserEntity = class UserEntity {
-};
+const class_validator_1 = require("class-validator");
+class CreateUserDto {
+}
 __decorate([
-    typeorm_1.ObjectIdColumn(),
-    __metadata("design:type", typeorm_1.ObjectID)
-], UserEntity.prototype, "id", void 0);
-__decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
-], UserEntity.prototype, "firstName", void 0);
+], CreateUserDto.prototype, "firstName", void 0);
 __decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsString(),
     __metadata("design:type", String)
-], UserEntity.prototype, "lastName", void 0);
+], CreateUserDto.prototype, "lastName", void 0);
 __decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsEmail(),
     __metadata("design:type", String)
-], UserEntity.prototype, "email", void 0);
+], CreateUserDto.prototype, "email", void 0);
 __decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsMobilePhone(),
     __metadata("design:type", Number)
-], UserEntity.prototype, "phone", void 0);
+], CreateUserDto.prototype, "phone", void 0);
 __decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsBooleanString(),
     __metadata("design:type", Boolean)
-], UserEntity.prototype, "isAdmin", void 0);
+], CreateUserDto.prototype, "isAdmin", void 0);
 __decorate([
-    typeorm_1.Column(),
+    class_validator_1.IsBooleanString(),
     __metadata("design:type", Boolean)
-], UserEntity.prototype, "verified", void 0);
-UserEntity = __decorate([
-    typeorm_1.Entity({ name: 'users' })
-], UserEntity);
-exports.UserEntity = UserEntity;
-//# sourceMappingURL=users.entity.js.map
+], CreateUserDto.prototype, "verified", void 0);
+exports.CreateUserDto = CreateUserDto;
+//# sourceMappingURL=create-users.dto.js.map

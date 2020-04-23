@@ -1,8 +1,9 @@
+import { CreateBookDto } from './create-books.dto';
 import { BookService } from './books.service';
-import { Book } from './books.entity';
+import { BookEntity } from './books.entity';
 export declare class BookController {
     private readonly bookService;
     constructor(bookService: BookService);
-    findAll(): Promise<Book[]>;
-    createBook(book: Partial<Book>): Promise<Book>;
+    findAll(): Promise<BookEntity[]>;
+    createBook(CreateBookDto: CreateBookDto): Promise<BookEntity>;
 }

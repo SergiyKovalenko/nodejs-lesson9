@@ -17,19 +17,19 @@ const typeorm_1 = require("@nestjs/typeorm");
 const users_entity_1 = require("./users.entity");
 const typeorm_2 = require("typeorm");
 let UserService = class UserService {
-    constructor(usersRepository) {
-        this.usersRepository = usersRepository;
+    constructor(userModel) {
+        this.userModel = userModel;
     }
     async findAll() {
-        return await this.usersRepository.find({});
+        return this.userModel.find();
     }
-    async createUser(user) {
-        return await this.usersRepository.save(new users_entity_1.User(user));
+    async createUser(CreateUserDto) {
+        return this.userModel.save(CreateUserDto);
     }
 };
 UserService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(users_entity_1.User)),
+    __param(0, typeorm_1.InjectRepository(users_entity_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_2.MongoRepository])
 ], UserService);
 exports.UserService = UserService;

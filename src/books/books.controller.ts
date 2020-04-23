@@ -1,18 +1,19 @@
-import { Controller , Get , Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
+import { CreateBookDto } from './create-books.dto';
 import { BookService } from './books.service';
-import { Book } from './books.entity';
+import { BookEntity } from './books.entity';
 
 @Controller()
 export class BookController {
-  constructor(private readonly bookService: BookService) {}
-
+    constructor(private readonly bookService: BookService) {}
+  
   @Get('/books')
-  async findAll(): Promise<Book[]> {
-    return await this.bookService.findAll();
-  }
-
+    async findAll(): Promise<BookEntity[]> {
+        return this.bookService.findAll();
+    }
+  
   @Post('/api/books')
-  async createBook(@Body() book: Partial<Book>): Promise<Book> {
-    return await this.bookService.createBook(book);
-  }  
+  async createBook(@Body() CreateBookDto: CreateBookDto) {
+      return this.bookService.createBook(CreateBookDto);
+  }
 }

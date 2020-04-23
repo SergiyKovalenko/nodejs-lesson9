@@ -13,16 +13,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const create_books_dto_1 = require("./create-books.dto");
 const books_service_1 = require("./books.service");
 let BookController = class BookController {
     constructor(bookService) {
         this.bookService = bookService;
     }
     async findAll() {
-        return await this.bookService.findAll();
+        return this.bookService.findAll();
     }
-    async createBook(book) {
-        return await this.bookService.createBook(book);
+    async createBook(CreateBookDto) {
+        return this.bookService.createBook(CreateBookDto);
     }
 };
 __decorate([
@@ -35,7 +36,7 @@ __decorate([
     common_1.Post('/api/books'),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_books_dto_1.CreateBookDto]),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "createBook", null);
 BookController = __decorate([

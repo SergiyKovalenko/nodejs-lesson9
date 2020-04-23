@@ -15,7 +15,7 @@ let BooksModule = class BooksModule {
 };
 BooksModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([books_entity_1.Book])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([books_entity_1.BookEntity])],
         controllers: [books_controller_1.BookController],
         providers: [books_service_1.BookService]
     })

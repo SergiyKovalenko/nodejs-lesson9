@@ -10,34 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let Book = class Book {
-    constructor(book) {
-        Object.assign(this, book);
-    }
+const create_books_dto_1 = require("./create-books.dto");
+let BookEntity = class BookEntity {
 };
 __decorate([
     typeorm_1.ObjectIdColumn(),
     __metadata("design:type", typeorm_1.ObjectID)
-], Book.prototype, "id", void 0);
+], BookEntity.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Book.prototype, "blogpost", void 0);
+], BookEntity.prototype, "blogpost", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Book.prototype, "title", void 0);
+], BookEntity.prototype, "title", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Book.prototype, "author", void 0);
+], BookEntity.prototype, "author", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Array)
-], Book.prototype, "published", void 0);
-Book = __decorate([
-    typeorm_1.Entity(),
-    __metadata("design:paramtypes", [Object])
-], Book);
-exports.Book = Book;
+    __metadata("design:type", create_books_dto_1.CreateBookPublishedDto)
+], BookEntity.prototype, "published", void 0);
+BookEntity = __decorate([
+    typeorm_1.Entity({ name: 'books' })
+], BookEntity);
+exports.BookEntity = BookEntity;
 //# sourceMappingURL=books.entity.js.map

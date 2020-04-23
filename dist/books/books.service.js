@@ -12,25 +12,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("@nestjs/typeorm");
 const books_entity_1 = require("./books.entity");
-const typeorm_2 = require("typeorm");
 let BookService = class BookService {
-    constructor(booksRepository) {
-        this.booksRepository = booksRepository;
+    constructor(bookModel) {
+        this.bookModel = bookModel;
     }
     async findAll() {
-        return await this.booksRepository.find({});
+        return this.bookModel.find();
     }
-    async createBook(book) {
-        return await this.booksRepository.save(new books_entity_1.Book(book));
+    async createBook(CreateBookDto) {
+        return this.bookModel.save(CreateBookDto);
     }
 };
 BookService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(books_entity_1.Book)),
-    __metadata("design:paramtypes", [typeorm_2.MongoRepository])
+    __param(0, typeorm_2.InjectRepository(books_entity_1.BookEntity)),
+    __metadata("design:paramtypes", [typeorm_1.MongoRepository])
 ], BookService);
 exports.BookService = BookService;
 //# sourceMappingURL=books.service.js.map
